@@ -7,19 +7,19 @@ struct Node{
 };
 
 template<typename T>
-struct DynamicArray{
+struct ListaDinamica{
     int card;
     Node<T>* start;
 };
 
 template<typename T>
-void create(DynamicArray<T> &array){
+void create(ListaDinamica<T> &array){
     array.card = 0;
     array.start = NULL;
 }
 
 template<typename T>
-void wipe(DynamicArray<T> &array){
+void wipe(ListaDinamica<T> &array){
     Node<T> *p;
     while(array.start != NULL){
         p = array.start;
@@ -30,7 +30,7 @@ void wipe(DynamicArray<T> &array){
 }
 
 template<typename T>
-void insert(DynamicArray<T> &array, T element, int pos){
+void insert(ListaDinamica<T> &array, T element, int pos){
     if(pos < 1 || pos > array.card+1){
         throw "INVALID POSITION";
     }
@@ -56,17 +56,17 @@ void insert(DynamicArray<T> &array, T element, int pos){
 }
 
 template<typename T>
-bool is_empty(const DynamicArray<T> &array){
+bool is_empty(const ListaDinamica<T> &array){
     return array.card == 0;
 }
 
 template<typename T>
-int size(const DynamicArray<T> &array){
+int tamanho(const ListaDinamica<T> &array){
     return array.card;
 }
 
 template<typename T>
-int find_position(const DynamicArray<T> &array, const T &element){
+int find_position(const ListaDinamica<T> &array, const T &element){
 
     Node<T> *prev;
     prev = array.start;
@@ -83,17 +83,17 @@ int find_position(const DynamicArray<T> &array, const T &element){
 }
 
 template<typename T>
-bool exists(const DynamicArray<T> &array, const T &element){
+bool existe(const ListaDinamica<T> &array, const T &element){
     return find_position(array, element) > -1;
 }
 
 template<typename T>
-bool valid_position(const DynamicArray<T> &array, const int &pos){
+bool valid_position(const ListaDinamica<T> &array, const int &pos){
     return (pos > 0) && (pos <= array.card);
 }
 
 template<typename T>
-T find_element(const DynamicArray<T> &array, const int &pos){
+T find_element(const ListaDinamica<T> &array, const int &pos){
     if(not valid_position(array, pos)){
         throw "INVALID POSITION";
     } else {
@@ -106,7 +106,7 @@ T find_element(const DynamicArray<T> &array, const int &pos){
 }
 
 template<typename T>
-void remove(DynamicArray<T> &array, const int &pos){
+void remove(ListaDinamica<T> &array, const int &pos){
     if(not valid_position(array, pos)){
         throw "INVALID POSITION";
     }
@@ -128,7 +128,7 @@ void remove(DynamicArray<T> &array, const int &pos){
 }
 
 template<typename T>
-void show(const DynamicArray<T> &array, const int &pos){
+void mostra(const ListaDinamica<T> &array, const int &pos){
     Node<T> *p = array.start;
     while(p != NULL){
         std::cout << p->element << std::endl;
