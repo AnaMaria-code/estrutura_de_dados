@@ -1,7 +1,7 @@
 #include <string>
 #include "lista_duplamente_encadeada.hpp"
 
-enum {
+enum tipoCarta{
     //tipo da carta
     NORMAL,
     BONUS,
@@ -12,7 +12,7 @@ typedef struct{
     int id;
     std::string simbolo;
     bool oculta;
-    int tipo;
+    tipoCarta tipo;
 } Carta;
 
 typedef struct{
@@ -31,7 +31,7 @@ void inicializa_cartas(ListaDinamica<T> &cartas){
     };
     for(int i = 0; i < 34; i++){
         Carta c{i, simbolos[i%18], true, NORMAL};
-        insere(cartas, c);
+        insere(cartas, c); //falta a posicao
     }
 }
 
